@@ -1,7 +1,11 @@
-export default function Index() {
+import Layout from '../layout/Layout'
+
+const Index = ()=> {
     return (
-      <div>
-        <p>Hello Next.js</p>
-      </div>
+      <Layout>
+        <p>Home page</p>
+      </Layout>
     );
   }
+
+export default Index
