@@ -1,0 +1,27 @@
+.navLinksDesktop{
+    margin: 8px;
+}
+
+.navLinksDesktop a{
+    margin: 8px;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+
+.navLinksDesktop a:hover{
+    text-decoration: underline;
+}
+
+.navLinksMobile{
+    background-color: #fce4ec;
+    width: 150px;
+}
+
+.navLinksMobile a{
+    text-decoration: none;
+    color: black;
+
+}
