@@ -1,0 +1,13 @@
+.listHeader{
+    text-align: center;
+    padding: 8px;
+    padding-top: 16px;
+}
+
+@media(min-width:960px){
+    .listHeader{
+        text-align: start;
+        padding: 24px;
+        padding-left: 32px;
+    }
+}

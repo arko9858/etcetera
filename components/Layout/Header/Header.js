@@ -83,7 +83,7 @@ const Header = props => {
         <Grid
           container
           style={{
-            backgroundColor: "lightpink",
+            backgroundColor: "#263238",
             textAlign: "center",
             padding: "8px 0",
             minHeight: "80px"
@@ -92,14 +92,14 @@ const Header = props => {
           alignContent="space-around">
           <Grid item xs={2}>
             <IconButton onClick={handleClick}>
-              <MenuIcon />
+              <MenuIcon style={{color:'#eceff1'}} />
             </IconButton>
           </Grid>
           <Grid item xs={6}>
-            <Typography variant="h6">Et Cetera</Typography>
+            <Typography style={{color:'#eceff1'}} variant="h6">Et Cetera</Typography>
           </Grid>
           <Grid item xs={4}>
-            <Button startIcon={<ShoppingCartOutlined />}>0 items</Button>
+            <Button style={{color:'#eceff1'}} startIcon={<ShoppingCartOutlined />}>0 items</Button>
           </Grid>
         </Grid>
         <Menu
@@ -116,7 +116,7 @@ const Header = props => {
         <div
           style={{
             textAlign: "start",
-            backgroundColor: "lightpink",
+            backgroundColor: "#263238",
             minHeight: "80px",
             width: "100%",
             display: "flex",
@@ -124,14 +124,14 @@ const Header = props => {
             alignItems: "center"
           }}>
           <div style={{marginLeft: "16px", flexGrow: 1}}>
-            <Typography variant="h6">Et Cetera</Typography>
+            <Typography style={{color:'#eceff1'}} variant="h6">Et Cetera</Typography>
           </div>
           <div style={{flexGrow: 5, textAlign: "center"}}>
             {navLinksDesktop}
           </div>
           <div style={{textAlign: "right", flexGrow: 1}}>
-            <Button startIcon={<ShoppingCartOutlined />}>
-              <Typography variant="caption">0 items</Typography>
+            <Button style={{color:'#eceff1'}} startIcon={<ShoppingCartOutlined />}>
+              <Typography style={{color:'#eceff1'}} variant="caption">0 items</Typography>
             </Button>
           </div>
         </div>
