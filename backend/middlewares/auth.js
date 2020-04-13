@@ -12,7 +12,7 @@ export default async (req, res, next) => {
     }
 
     //verify token
-    const decoded = jwt.verify(token, process.env.jwtSecret)
+    const decoded = jwt.verify(token, process.env.JWT_SECRET)
     if (!decoded) {
         return res.status(401).send("access denied")
     }

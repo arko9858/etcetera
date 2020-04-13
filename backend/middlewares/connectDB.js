@@ -2,7 +2,7 @@ import mongoose from "mongoose"
 
 export default async (req, res, next) => {
   try {
-    const connection = await mongoose.createConnection(process.env.mongoURI, {
+    const connection = await mongoose.createConnection(process.env.MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
