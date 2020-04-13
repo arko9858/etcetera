@@ -1,0 +1,23 @@
+.title{
+    text-align: center;
+    padding-top: 16px;
+}
+
+.root{
+    padding: 0;
+}
+
+.section{
+    padding: 0;
+}
+/* For desktop screen */
+@media(min-width:960px){
+    
+    .root{
+        padding: 16px 0;
+    }
+
+   .section{
+     padding: 8px 32px
+   }
+}

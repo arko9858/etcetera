@@ -1,0 +1,28 @@
+.root{
+    background-color: #263238;
+    height: 150px;
+    /* text-align: center; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.text{
+    color: white;
+    margin: 8px;
+    text-decoration: none;
+}
+
+.links{
+    margin: 12px;
+}
+
+.links a{
+    color: white;
+    margin: 8px;
+}
+
+.myLink{
+    color: white;
+}

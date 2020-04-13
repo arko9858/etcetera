@@ -1,5 +1,5 @@
 import React from "react"
-import classes from './ProductCard.module.css'
+import classes from "./ProductCard.module.css"
 import {
   Card,
   CardActionArea,
@@ -7,24 +7,30 @@ import {
   CardContent,
   Typography
 } from "@material-ui/core"
-
+import {useRouter} from "next/router"
 
 const ProductCard = props => {
+  const {productId, productName, productPrice, productImageUrl} = props
+  const router = useRouter()
+  const forwardToProductPage = () => {
+    router.push(productId ? "/product/" + productId : "/")
+  }
 
-  const imageLink = 'https://assets.bigcartel.com/product_images/251177450/blue_hoodie233.png?auto=format&fit=max&h=600&w=600'
   return (
-    <Card className={classes.card} variant="outlined">
-      <CardActionArea>
+    <Card className={classes.card}>
+      <CardActionArea onClick={forwardToProductPage}>
         <CardMedia
           className={classes.media}
-          title="Product Name - Color"
-          image={imageLink}
+          title={productName ? productName : "loading failed"}
+          image={productImageUrl ? productImageUrl : "loading failed"}
         />
         <CardContent className={classes.content}>
           <Typography gutterBottom variant="body1" color="primary">
-            Shadow Dogs Unleashed - Purple
+            {productName ? productName : " - "}
           </Typography>
-          <Typography color="textPrimary">BDT 399.00</Typography>
+          <Typography color="textPrimary">
+            {productPrice ? productPrice + " BDT" : "0 BDT"}
+          </Typography>
         </CardContent>
       </CardActionArea>
     </Card>

@@ -1,0 +1,33 @@
+.root{
+    width: 100%;
+}
+
+.productImage{
+    width: 100%;
+    padding: 16px;
+}
+
+.productDescriptions{
+    width: 100%;
+    padding: 16px;
+    padding-top: 8px;
+}
+
+
+.actionButtons{
+    width: 95%;
+    margin: 8px auto;
+    text-align: center;
+}
+
+/* For desktop screen */
+@media(min-width:960px){
+    
+    .productDescriptions{
+        padding-top: 16px;
+    }
+    .actionButtons{
+        width: 90%;
+        margin: 8px;
+    }
+}

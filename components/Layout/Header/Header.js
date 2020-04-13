@@ -1,4 +1,5 @@
-import React from "react"
+import React, {useEffect} from "react"
+import Router from "next/router"
 import {
   Hidden,
   Grid,
@@ -12,13 +13,19 @@ import {ShoppingCartOutlined} from "@material-ui/icons"
 import MenuIcon from "@material-ui/icons/Menu"
 import Link from "next/link"
 import classes from "./Header.module.css"
-const Header = props => {
-  const [anchorEl, setAnchorEl] = React.useState(null)
+import CartContext from "../../../contexts/CartContext"
 
+const Header = props => {
+  const {cartItemCount} = props
+
+  const gotoCart = () => {
+    Router.push("/cart")
+  }
+
+  const [anchorEl, setAnchorEl] = React.useState(null)
   const handleClick = event => {
     setAnchorEl(event.currentTarget)
   }
-
   const handleClose = () => {
     setAnchorEl(null)
   }
@@ -92,14 +99,24 @@ const Header = props => {
           alignContent="space-around">
           <Grid item xs={2}>
             <IconButton onClick={handleClick}>
-              <MenuIcon style={{color:'#eceff1'}} />
+              <MenuIcon style={{color: "#eceff1"}} />
             </IconButton>
           </Grid>
           <Grid item xs={6}>
-            <Typography style={{color:'#eceff1'}} variant="h6">Et Cetera</Typography>
+            <Typography style={{color: "#eceff1"}} variant="h6">
+              Et Cetera
+            </Typography>
           </Grid>
           <Grid item xs={4}>
-            <Button style={{color:'#eceff1'}} startIcon={<ShoppingCartOutlined />}>0 items</Button>
+            <Button
+              onClick={gotoCart}
+              style={{color: "#eceff1"}}
+              startIcon={<ShoppingCartOutlined />}>
+              <Typography style={{color: "#eceff1"}} variant="caption">
+                {cartItemCount ? cartItemCount : "0"} item
+                {cartItemCount > 1 ? "s" : ""}
+              </Typography>
+            </Button>
           </Grid>
         </Grid>
         <Menu
@@ -124,14 +141,22 @@ const Header = props => {
             alignItems: "center"
           }}>
           <div style={{marginLeft: "16px", flexGrow: 1}}>
-            <Typography style={{color:'#eceff1'}} variant="h6">Et Cetera</Typography>
+            <Typography style={{color: "#eceff1"}} variant="h6">
+              Et Cetera
+            </Typography>
           </div>
           <div style={{flexGrow: 5, textAlign: "center"}}>
             {navLinksDesktop}
           </div>
           <div style={{textAlign: "right", flexGrow: 1}}>
-            <Button style={{color:'#eceff1'}} startIcon={<ShoppingCartOutlined />}>
-              <Typography style={{color:'#eceff1'}} variant="caption">0 items</Typography>
+            <Button
+              onClick={gotoCart}
+              style={{color: "#eceff1"}}
+              startIcon={<ShoppingCartOutlined />}>
+              <Typography style={{color: "#eceff1"}} variant="caption">
+                {cartItemCount ? cartItemCount : "0"} item
+                {cartItemCount > 1 ? "s" : ""}
+              </Typography>
             </Button>
           </div>
         </div>
