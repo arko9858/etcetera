@@ -13,9 +13,19 @@ function runMiddleware(req, res, fn) {
   })
 }
 
-const middleware1 = (req,res,next)=>{
-  req.response11 = "This is response11"
-  next()
+const middleware1 = async (req,res,next)=>{
+  try {
+    const connection = await mongoose.createConnection(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+    })
+    req.connection = connection
+    req.response11 = {msg: "DB connected"}
+    next()
+  } catch (err) {
+    return res.status(500).json({error: err.message || "Something went wrong"})
+  }
 }
 
 export default async (req, res) => {
