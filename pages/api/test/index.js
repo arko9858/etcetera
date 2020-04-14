@@ -1,35 +1,20 @@
-// import connectDB from "../../../backend/middlewares/connectDB"
-// import authenticateUser from "../../../backend/services/user/authenticate"
-import mongoose from "mongoose"
+import mongoDb from '../../../backend/middlewares/mongoDB'
+import nextConnect from 'next-connect'
 
-// function runMiddleware(req, res, fn) {
-//   return new Promise((resolve, reject) => {
-//     fn(req, res, (result) => {
-//       if (result instanceof Error) {
-//         return reject(result)
-//       }
+const handler = nextConnect()
 
-//       return resolve(result)
-//     })
-//   })
-// }
+handler.use(mongoDb)
 
-export default async (req, res) => {
-  const {method} = req
 
-  if (method === "POST") {
-    const mongoURI =
-      "mongodb+srv://arko9858:Do3VytqKneGup4Kp@cluster0-b2jmx.mongodb.net/etc-db1?retryWrites=true&w=majority"
-    const connection = await mongoose.createConnection(mongoURI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-    })
-    req.connection = connection
-    const output = {msg: "DB connected"}
-    res.status(200).send(output)
-    // await authenticateUser(req, res)
-  } else {
-    res.status(405).json({msg: "invalid request"})
-  }
-}
+handler.get(async (req, res) => {
+
+  let doc = await req.db.collection('users').findOne()
+  console.log(doc);
+  res.json(doc);
+});
+
+handler.post(async (req,res)=>{
+  res.json({msg:"this is a post req"})
+})
+
+export default handler;
