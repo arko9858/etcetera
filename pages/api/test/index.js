@@ -14,9 +14,12 @@ function runMiddleware(req, res, fn) {
   })
 }
 
-const middleware1 = async (req,res,next)=>{
+const middleware1 = async (req, res, next) => {
   try {
-    const connection = await mongoose.createConnection(process.env.MONGO_URI, {
+    // const mongoURI=process.env.MONGO_URI
+    const mongoURI =
+      "mongodb+srv://arko9858:Do3VytqKneGup4Kp@cluster0-b2jmx.mongodb.net/etc-db1?retryWrites=true&w=majority"
+    const connection = await mongoose.createConnection(mongoURI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
