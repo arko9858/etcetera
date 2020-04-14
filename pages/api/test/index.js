@@ -2,21 +2,22 @@
 // import authenticateUser from "../../../backend/services/user/authenticate"
 import mongoose from "mongoose"
 
-function runMiddleware(req, res, fn) {
-  return new Promise((resolve, reject) => {
-    fn(req, res, (result) => {
-      if (result instanceof Error) {
-        return reject(result)
-      }
+// function runMiddleware(req, res, fn) {
+//   return new Promise((resolve, reject) => {
+//     fn(req, res, (result) => {
+//       if (result instanceof Error) {
+//         return reject(result)
+//       }
 
-      return resolve(result)
-    })
-  })
-}
+//       return resolve(result)
+//     })
+//   })
+// }
 
-const middleware1 = async (req, res, next) => {
-  try {
-    // const mongoURI=process.env.MONGO_URI
+export default async (req, res) => {
+  const {method} = req
+
+  if (method === "POST") {
     const mongoURI =
       "mongodb+srv://arko9858:Do3VytqKneGup4Kp@cluster0-b2jmx.mongodb.net/etc-db1?retryWrites=true&w=majority"
     const connection = await mongoose.createConnection(mongoURI, {
@@ -25,19 +26,7 @@ const middleware1 = async (req, res, next) => {
       useCreateIndex: true,
     })
     req.connection = connection
-    req.response11 = {msg: "DB connected"}
-    next()
-  } catch (err) {
-    return res.status(500).json({error: err.message || "Something went wrong"})
-  }
-}
-
-export default async (req, res) => {
-  const {method} = req
-
-  if (method === "POST") {
-    await runMiddleware(req, res, middleware1)
-    const output = req.response11 ? req.response11 : "Default output"
+    const output = {msg: "DB connected"}
     res.status(200).send(output)
     // await authenticateUser(req, res)
   } else {
