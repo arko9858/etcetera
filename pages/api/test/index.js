@@ -1,14 +1,29 @@
-export default (req, res) => {
+import connectDB from "../../../backend/middlewares/connectDB"
+import authenticateUser from "../../../backend/services/user/authenticate"
+
+
+function runMiddleware(req, res, fn) {
+  return new Promise((resolve, reject) => {
+    fn(req, res, result => {
+      if (result instanceof Error) {
+        return reject(result)
+      }
+
+      return resolve(result)
+    })
+  })
+}
+
+
+
+export default async (req, res) => {
   const {method} = req
 
-  const envVars = process.env ? process.env : "vars not found"
-  const secret = process.env.jwtSecret
-    ? process.env.jwtSecret
-    : "secret not found"
-
-  if (method === "GET") {
-    res.status(200).send("It's working")
+  
+  if (method === "POST") {
+    await runMiddleware(req, res, connectDB)
+    // await authenticateUser(req, res)
   } else {
-    res.json({allEnvVars: envVars, secret})
-  }
+    res.status(405).json({msg: "invalid request"})
+  } 
 }
