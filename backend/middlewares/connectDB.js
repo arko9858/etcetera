@@ -8,8 +8,7 @@ export default async (req, res, next) => {
       useCreateIndex: true,
     })
     req.connection = connection
-    return res.status(200).json({msg:"DB connected"})
-
+    req.response11 = {msg: "DB connected"}
     next()
   } catch (err) {
     return res.status(500).json({error: err.message || "Something went wrong"})
