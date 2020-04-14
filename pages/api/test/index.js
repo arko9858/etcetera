@@ -1,5 +1,6 @@
 // import connectDB from "../../../backend/middlewares/connectDB"
 // import authenticateUser from "../../../backend/services/user/authenticate"
+import mongoose from "mongoose"
 
 function runMiddleware(req, res, fn) {
   return new Promise((resolve, reject) => {
