@@ -1,9 +1,0 @@
-{
-    "build": {
-      "env": {
-        "MONGO_URI": "@mongodb+srv://arko9858:Do3VytqKneGup4Kp@cluster0-b2jmx.mongodb.net/etc-db1?retryWrites=true&w=majority",
-        "JWT_SECRET":"@6969iLoVEaPPIle55420cbtkys",
-        "BASE_URL":"https://etcetera-ib24vd5bd.now.sh/"
-      }
-    }
-  }
